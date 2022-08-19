@@ -3,7 +3,7 @@ just a place to store my vimrc
 
 requires:
 Pip  
-cmake (via pip install)
+cmake (via pip install)  
 brew
 
 # Steps:
