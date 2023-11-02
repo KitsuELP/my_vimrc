@@ -70,6 +70,11 @@ Plugin 'Yggdroot/indentLine'
 Plugin 'pedrohdz/vim-yaml-folds'
 " ALE linting
 Plugin 'dense-analysis/ale'
+" Vim silicon for screen shot of code
+Plugin 'segeljakt/vim-silicon'
+" Rust
+Plugin 'rust-lang/rust.vim'
+
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -151,6 +156,7 @@ let g:syntastic_python_checkers=['flake8']
 let g:syntastic_python_flake8_args='--ignore=E225,E265'
 let g:syntastic_python_checkers=['python3']
 let g:autopep8_max_line_length=120
+let g:autopep8_diff_type='vertical'
 "Apply JSX syntax for .js
 let g:jsx_ext_required = 0
 "Repeat.vim
@@ -234,7 +240,7 @@ let g:ale_pattern_options = {
 \   '.*\.go$': {'ale_enabled': 0},
 \   '.*some/folder/.*\.go$': {'ale_enabled': 0},
 \ }
-let g:ale_python_pylint_options = '--max-line-length=120 --disable=R0902,C0103,C0111 --extension-pkg-whitelist=cv2' 
+let g:ale_python_pylint_options = '--max-line-length=120 --disable=R0902,C0103,C0111 --extension-pkg-whitelist=cv2 --generated-members=numpy.*,torch.*,cv2.*'
 let g:ale_python_flake8_options = '--max-line-length=120 --disable=R0902,C0103,C0111' 
 set updatetime=100
 
@@ -242,3 +248,20 @@ set updatetime=100
 let g:vim_json_conceal=0
 let g:markdown_syntax_conceal=0
 
+"Silicon config
+let g:silicon = {
+      \   'theme':              'gruvbox',
+      \   'font':                  'Hack',
+      \   'background':         '#AAAAFF',
+      \   'shadow-color':       '#555555',
+      \   'line-pad':                   2,
+      \   'pad-horiz':                 80,
+      \   'pad-vert':                 100,
+      \   'shadow-blur-radius':         0,
+      \   'shadow-offset-x':            0,
+      \   'shadow-offset-y':            0,
+      \   'line-number':           v:true,
+      \   'round-corner':          v:true,
+      \   'window-controls':       v:true,
+      \ }
+let g:silicon['output'] = '~/Pictures/silicon/silicon-{time:%Y-%m-%d-%H%M%S}.png'
